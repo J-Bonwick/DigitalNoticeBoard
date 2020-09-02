@@ -15,7 +15,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NoticeDisplay[0].NoticeBoardName)
+                @Html.DisplayNameFor(model => model.NoticeDisplay[0].NoticeDisplayName)
             </th>
             <th></th>
         </tr>
@@ -24,7 +24,7 @@
 @foreach (var item in Model.NoticeDisplay) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.NoticeBoardName)
+                @Html.DisplayFor(modelItem => item.NoticeDisplayName)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.NoticeDisplayID">Edit</a> |

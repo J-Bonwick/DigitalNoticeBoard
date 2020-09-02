@@ -10,7 +10,7 @@ namespace DigitalNoticeBoard.Models
     {
         public int NoticeDisplayID { get; set; }
         [Display(Name = "Notice Display Name")]
-        public string NoticeBoardName { get; set; }
+        public string NoticeDisplayName { get; set; }
 
         public ICollection<NoticeAssignment> NoticeAssignments { get; set; }
     }

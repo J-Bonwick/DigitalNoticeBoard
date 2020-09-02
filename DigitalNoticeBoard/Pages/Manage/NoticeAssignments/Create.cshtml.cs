@@ -21,8 +21,8 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeAssignments
 
         public IActionResult OnGet()
         {
-        ViewData["NoticeID"] = new SelectList(_context.Notices, "NoticeID", "NoticeID");
-        ViewData["NoticeDisplayID"] = new SelectList(_context.NoticeDisplays, "NoticeDisplayID", "NoticeDisplayID");
+        ViewData["NoticeID"] = new SelectList(_context.Notices, "NoticeID", "NoticeName");
+        ViewData["NoticeDisplayID"] = new SelectList(_context.NoticeDisplays, "NoticeDisplayID", "NoticeDisplayName");
             return Page();
         }
 
