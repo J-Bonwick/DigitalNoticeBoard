@@ -29,6 +29,7 @@ namespace DigitalNoticeBoard
             services.AddRazorPages( options =>
             {
                 options.Conventions.AuthorizePage("/Privacy");
+                options.Conventions.AuthorizeFolder("/Manage");
                 options.Conventions.AllowAnonymousToPage("/Index");
             });
             services.AddAuthentication(IISDefaults.AuthenticationScheme);
