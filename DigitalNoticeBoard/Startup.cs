@@ -34,7 +34,7 @@ namespace DigitalNoticeBoard
             services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
             services.AddDbContext<DigitalNoticeBoardContext>(options =>
-                    options.UseSqlite("Data Source=DigitalNoticeBoard.db");
+                    options.UseSqlite("Data Source=DigitalNoticeBoard.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
