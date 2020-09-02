@@ -14,10 +14,15 @@ namespace DigitalNoticeBoard.Data
         {
         }
 
-        public DbSet<DigitalNoticeBoard.Models.Notice> Notice { get; set; }
+        public DbSet<DigitalNoticeBoard.Models.Notice> Notices { get; set; }
+        public DbSet<DigitalNoticeBoard.Models.NoticeDisplay> NoticeDisplays { get; set; }
+        public DbSet<DigitalNoticeBoard.Models.NoticeAssignment> NoticeAssignments { get; set; }
 
-        public DbSet<DigitalNoticeBoard.Models.NoticeDisplay> NoticeDisplay { get; set; }
-
-        public DbSet<DigitalNoticeBoard.Models.NoticeAssignment> NoticeAssignment { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Notice>().ToTable("Notice");
+            modelBuilder.Entity<NoticeAssignment>().ToTable("NoticeAssignment");
+            modelBuilder.Entity<NoticeDisplay>().ToTable("NoticeDisplay");
+        }
     }
 }

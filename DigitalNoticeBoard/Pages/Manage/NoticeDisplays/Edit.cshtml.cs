@@ -30,7 +30,7 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeDisplays
                 return NotFound();
             }
 
-            NoticeDisplay = await _context.NoticeDisplay.FirstOrDefaultAsync(m => m.NoticeDisplayID == id);
+            NoticeDisplay = await _context.NoticeDisplays.FirstOrDefaultAsync(m => m.NoticeDisplayID == id);
 
             if (NoticeDisplay == null)
             {
@@ -71,7 +71,7 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeDisplays
 
         private bool NoticeDisplayExists(int id)
         {
-            return _context.NoticeDisplay.Any(e => e.NoticeDisplayID == id);
+            return _context.NoticeDisplays.Any(e => e.NoticeDisplayID == id);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
                 return NotFound();
             }
 
-            Notice = await _context.Notice.FirstOrDefaultAsync(m => m.NoticeID == id);
+            Notice = await _context.Notices.FirstOrDefaultAsync(m => m.NoticeID == id);
 
             if (Notice == null)
             {
@@ -45,11 +45,11 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
                 return NotFound();
             }
 
-            Notice = await _context.Notice.FindAsync(id);
+            Notice = await _context.Notices.FindAsync(id);
 
             if (Notice != null)
             {
-                _context.Notice.Remove(Notice);
+                _context.Notices.Remove(Notice);
                 await _context.SaveChangesAsync();
             }
 

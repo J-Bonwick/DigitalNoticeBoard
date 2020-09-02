@@ -28,7 +28,7 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeDisplays
                 return NotFound();
             }
 
-            NoticeDisplay = await _context.NoticeDisplay.FirstOrDefaultAsync(m => m.NoticeDisplayID == id);
+            NoticeDisplay = await _context.NoticeDisplays.FirstOrDefaultAsync(m => m.NoticeDisplayID == id);
 
             if (NoticeDisplay == null)
             {

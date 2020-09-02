@@ -21,8 +21,8 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeAssignments
 
         public IActionResult OnGet()
         {
-        ViewData["NoticeID"] = new SelectList(_context.Notice, "NoticeID", "NoticeID");
-        ViewData["NoticeDisplayID"] = new SelectList(_context.NoticeDisplay, "NoticeDisplayID", "NoticeDisplayID");
+        ViewData["NoticeID"] = new SelectList(_context.Notices, "NoticeID", "NoticeID");
+        ViewData["NoticeDisplayID"] = new SelectList(_context.NoticeDisplays, "NoticeDisplayID", "NoticeDisplayID");
             return Page();
         }
 
@@ -38,7 +38,7 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeAssignments
                 return Page();
             }
 
-            _context.NoticeAssignment.Add(NoticeAssignment);
+            _context.NoticeAssignments.Add(NoticeAssignment);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

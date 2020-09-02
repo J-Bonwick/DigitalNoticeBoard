@@ -29,7 +29,7 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeAssignments
                 return NotFound();
             }
 
-            NoticeAssignment = await _context.NoticeAssignment
+            NoticeAssignment = await _context.NoticeAssignments
                 .Include(n => n.Notice)
                 .Include(n => n.NoticeDisplay).FirstOrDefaultAsync(m => m.NoticeAssignmentID == id);
 
@@ -47,11 +47,11 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeAssignments
                 return NotFound();
             }
 
-            NoticeAssignment = await _context.NoticeAssignment.FindAsync(id);
+            NoticeAssignment = await _context.NoticeAssignments.FindAsync(id);
 
             if (NoticeAssignment != null)
             {
-                _context.NoticeAssignment.Remove(NoticeAssignment);
+                _context.NoticeAssignments.Remove(NoticeAssignment);
                 await _context.SaveChangesAsync();
             }
 

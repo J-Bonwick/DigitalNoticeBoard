@@ -28,7 +28,7 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeAssignments
                 return NotFound();
             }
 
-            NoticeAssignment = await _context.NoticeAssignment
+            NoticeAssignment = await _context.NoticeAssignments
                 .Include(n => n.Notice)
                 .Include(n => n.NoticeDisplay).FirstOrDefaultAsync(m => m.NoticeAssignmentID == id);
 

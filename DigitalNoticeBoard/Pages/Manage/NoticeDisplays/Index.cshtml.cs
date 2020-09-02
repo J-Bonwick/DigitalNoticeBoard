@@ -23,7 +23,7 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeDisplays
 
         public async Task OnGetAsync()
         {
-            NoticeDisplay = await _context.NoticeDisplay.ToListAsync();
+            NoticeDisplay = await _context.NoticeDisplays.ToListAsync();
         }
     }
 }

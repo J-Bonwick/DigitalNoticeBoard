@@ -36,7 +36,7 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
                 return Page();
             }
 
-            _context.Notice.Add(Notice);
+            _context.Notices.Add(Notice);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

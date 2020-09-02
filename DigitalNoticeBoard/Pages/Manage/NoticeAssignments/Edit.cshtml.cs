@@ -30,7 +30,7 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeAssignments
                 return NotFound();
             }
 
-            NoticeAssignment = await _context.NoticeAssignment
+            NoticeAssignment = await _context.NoticeAssignments
                 .Include(n => n.Notice)
                 .Include(n => n.NoticeDisplay).FirstOrDefaultAsync(m => m.NoticeAssignmentID == id);
 
@@ -38,8 +38,8 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeAssignments
             {
                 return NotFound();
             }
-           ViewData["NoticeID"] = new SelectList(_context.Notice, "NoticeID", "NoticeID");
-           ViewData["NoticeDisplayID"] = new SelectList(_context.NoticeDisplay, "NoticeDisplayID", "NoticeDisplayID");
+           ViewData["NoticeID"] = new SelectList(_context.Notices, "NoticeID", "NoticeID");
+           ViewData["NoticeDisplayID"] = new SelectList(_context.NoticeDisplays, "NoticeDisplayID", "NoticeDisplayID");
             return Page();
         }
 
@@ -75,7 +75,7 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeAssignments
 
         private bool NoticeAssignmentExists(int id)
         {
-            return _context.NoticeAssignment.Any(e => e.NoticeAssignmentID == id);
+            return _context.NoticeAssignments.Any(e => e.NoticeAssignmentID == id);
         }
     }
 }
