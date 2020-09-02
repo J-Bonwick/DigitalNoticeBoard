@@ -16,6 +16,6 @@ namespace DigitalNoticeBoard.Models
 
 
 
-        public ICollection<NoticeAssign> NoticeAssignments { get; set; }
+        public ICollection<NoticeAssignment> NoticeAssignments { get; set; }
     }
 }

@@ -12,6 +12,6 @@ namespace DigitalNoticeBoard.Models
         [Display(Name = "Notice Display Name")]
         public string NoticeBoardName { get; set; }
 
-        public ICollection<NoticeAssign> NoticeAssignments { get; set; }
+        public ICollection<NoticeAssignment> NoticeAssignments { get; set; }
     }
 }
