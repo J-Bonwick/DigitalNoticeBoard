@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace DigitalNoticeBoard.Models
 {
-    public class NoticeAssign
+    public class NoticeAssignment
     {
-        public int NoticeAssignID { get; set; }
+        public int NoticeAssignmentID { get; set; }
         public int NoticeID { get; set; }
         public Notice Notice { get; set; }
         public int NoticeDisplayID { get; set; }

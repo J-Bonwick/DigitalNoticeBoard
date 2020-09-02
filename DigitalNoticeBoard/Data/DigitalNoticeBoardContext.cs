@@ -17,5 +17,7 @@ namespace DigitalNoticeBoard.Data
         public DbSet<DigitalNoticeBoard.Models.Notice> Notice { get; set; }
 
         public DbSet<DigitalNoticeBoard.Models.NoticeDisplay> NoticeDisplay { get; set; }
+
+        public DbSet<DigitalNoticeBoard.Models.NoticeAssignment> NoticeAssignment { get; set; }
     }
 }
