@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Pages\Manage\NoticeAssignments\" />
-    <Folder Include="Pages\Manage\NoticeDisplays\" />
   </ItemGroup>
 
 </Project>
