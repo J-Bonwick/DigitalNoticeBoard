@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Server.IISIntegration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using DigitalNoticeBoard.Data;
 
 namespace DigitalNoticeBoard
 {
@@ -30,6 +32,9 @@ namespace DigitalNoticeBoard
                 options.Conventions.AllowAnonymousToPage("/Index");
             });
             services.AddAuthentication(IISDefaults.AuthenticationScheme);
+
+            services.AddDbContext<DigitalNoticeBoardContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DigitalNoticeBoardContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
