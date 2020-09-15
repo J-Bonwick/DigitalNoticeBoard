@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using DigitalNoticeBoard.Data;
+using Microsoft.AspNetCore.Authentication;
 
 namespace DigitalNoticeBoard
 {
@@ -28,7 +29,7 @@ namespace DigitalNoticeBoard
         {
             services.AddRazorPages( options =>
             {
-                options.Conventions.AuthorizePage("/Privacy");
+                //options.Conventions.AuthorizePage("/Privacy");
                 options.Conventions.AuthorizeFolder("/Manage");
                 options.Conventions.AllowAnonymousToPage("/Index");
             });
