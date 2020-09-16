@@ -39,16 +39,19 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if(UploadFile.Length > 0)
+            if (UploadFile != null)
             {
-                var fileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(UploadFile.FileName);
-                var dir = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot/imageUpload");
-                Notice.NoticeImagePath = fileName;
-                var filePath = Path.Combine(dir, fileName);
-
-                using (var stream = System.IO.File.Create(filePath))
+                if (UploadFile.Length > 0)
                 {
-                    await UploadFile.CopyToAsync(stream);
+                    var fileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(UploadFile.FileName);
+                    var dir = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot/imageUpload");
+                    Notice.NoticeImagePath = fileName;
+                    var filePath = Path.Combine(dir, fileName);
+
+                    using (var stream = System.IO.File.Create(filePath))
+                    {
+                        await UploadFile.CopyToAsync(stream);
+                    }
                 }
             }
             else

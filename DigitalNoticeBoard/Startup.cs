@@ -71,7 +71,7 @@ namespace DigitalNoticeBoard
     }
     public class ReloadHub : Hub
     {
-        public Task SendReload(string user, string message)
+        public Task SendReload()
         {
             return Clients.All.SendAsync("Reload");
         }
