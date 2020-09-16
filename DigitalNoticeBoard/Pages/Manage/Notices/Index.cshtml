@@ -15,6 +15,9 @@
     <thead>
         <tr>
             <th>
+                Preview
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Notice[0].NoticeName)
             </th>
             <th>
@@ -23,15 +26,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.Notice[0].NoticeStopDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Notice[0].NoticeImagePath)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.Notice) {
         <tr>
+            <td>
+                <a href="~/imageUpload/@item.NoticeImagePath">
+                    <img src="~/imageUpload/@item.NoticeImagePath" style="height: 150px"/>
+                </a>
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NoticeName)
             </td>
@@ -41,9 +47,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NoticeStopDate)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NoticeImagePath)
-            </td>
+
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.NoticeID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.NoticeID">Details</a> |
