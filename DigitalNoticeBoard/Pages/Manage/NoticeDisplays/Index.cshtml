@@ -17,6 +17,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.NoticeDisplay[0].NoticeDisplayName)
             </th>
+            <th>
+                Display Link
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -25,6 +28,11 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.NoticeDisplayName)
+            </td>
+            <td>
+                <a href="/@item.NoticeDisplayID">
+                    @Url.PageLink("/Index")@item.NoticeDisplayID
+                </a>
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.NoticeDisplayID">Edit</a> |
