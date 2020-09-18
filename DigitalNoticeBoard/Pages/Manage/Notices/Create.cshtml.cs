@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 
 namespace DigitalNoticeBoard.Pages.Manage.Notices
 {
@@ -18,6 +19,7 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
     {
         private readonly DigitalNoticeBoard.Data.DigitalNoticeBoardContext _context;
         private readonly IHostEnvironment hostingEnvironment;
+        public IList<NoticeDisplay> NoticeDisplay { get; set; }
 
         public CreateModel(DigitalNoticeBoard.Data.DigitalNoticeBoardContext context, IHostEnvironment environment)
         {
@@ -25,9 +27,12 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
             this.hostingEnvironment = environment;
         }
 
-        public IActionResult OnGet()
+
+
+        public async Task OnGetAsync()
         {
-            return Page();
+            NoticeDisplay = await _context.NoticeDisplays.ToListAsync();
+            //return Page();
         }
 
         [BindProperty]

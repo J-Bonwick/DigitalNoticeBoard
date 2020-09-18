@@ -30,20 +30,39 @@
                 <span asp-validation-for="Notice.NoticeStopDate" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label asp-for="Notice.NoticeImagePath" class="control-label"></label>
-                <input asp-for="Notice.NoticeImagePath" class="form-control" />
-                <span asp-validation-for="Notice.NoticeImagePath" class="text-danger"></span>
+            <label asp-for="Notice.NoticeImagePath" class="control-label"></label>
+            <input asp-for="Notice.NoticeImagePath" class="form-control" />
+            <span asp-validation-for="Notice.NoticeImagePath" class="text-danger"></span>
             </div>*@
-        <div class="custom-file">
+            <div class="custom-file ">
 
-            <input asp-for="UploadFile" type="file" class="custom-file-input" />
-            <label asp-for="UploadFile" class="custom-file-label">Choose an image to upload</label>
-            <span asp-validation-for="UploadFile"></span>
-        </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input asp-for="UploadFile" type="file" class="custom-file-input" />
+                <label asp-for="UploadFile" class="custom-file-label">Choose an image to upload</label>
+                <span asp-validation-for="UploadFile"></span>
             </div>
-</form>
+            <div class="card form-group" style="margin-top: 20px">
+                <div class="card-header">
+                    Notice Boards
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach (var display in Model.NoticeDisplay)
+                    {
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" />
+                            <label class="form-check-label">@display.NoticeDisplayName</label>
+
+                        </div>
+                    </li>
+                    }
+                </ul>
+
+            </div>
+            
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+        </form>
     </div>
 </div>
 
