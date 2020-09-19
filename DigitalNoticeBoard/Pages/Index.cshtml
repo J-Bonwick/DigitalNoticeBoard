@@ -2,6 +2,7 @@
 @model IndexModel
 @{
     Layout = "";
+    bool firstImage = true;
 }
 
 <!DOCTYPE html>
@@ -16,13 +17,14 @@
 <body>
     <div id="carousel" class="carousel slide align-middle" data-ride="carousel" data-pause="false" data-interval="3000">
         <div class="carousel-inner">
-            @for (int i = 0; i < Model.NoticeAssignment.Count; i++)
+            @foreach(var assignment in Model.NoticeAssignment)
             {
-                if (Model.NoticeAssignment[i].NoticeDisplayID.ToString() == Model.displayID)
+                if (assignment.NoticeDisplayID.ToString() == Model.displayID)
                 {
-                    <div class="carousel-item @(i == 0 ? "active" : "")">
-                        <img class="d-block w-100" src="~/imageUpload/@Model.NoticeAssignment[i].Notice.NoticeImagePath" alt="First slide">
+                    <div class="carousel-item @(firstImage ? "active" : "")">
+                        <img class="d-block w-100" src="~/imageUpload/@assignment.Notice.NoticeImagePath" alt="First slide">
                     </div>
+                    firstImage = false;
                 }
             }
         </div>
