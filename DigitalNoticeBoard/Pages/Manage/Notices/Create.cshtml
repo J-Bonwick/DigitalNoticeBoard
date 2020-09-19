@@ -36,13 +36,13 @@
             </div>*@
             <div class="custom-file ">
 
-                <input asp-for="UploadFile" type="file" class="custom-file-input" />
+                <input asp-for="UploadFile" type="file" class="custom-file-input" data-val-required="Please upload an image."/>
                 <label asp-for="UploadFile" class="custom-file-label">Choose an image to upload</label>
-                <span asp-validation-for="UploadFile"></span>
+                <span asp-validation-for="UploadFile" class="text-danger"></span>
             </div>
             <div class="card form-group" style="margin-top: 20px">
                 <div class="card-header">
-                    Notice Boards
+                    Associated Notice Boards
                 </div>
                 <ul class="list-group list-group-flush">
                     @foreach (var display in Model.NoticeDisplay)

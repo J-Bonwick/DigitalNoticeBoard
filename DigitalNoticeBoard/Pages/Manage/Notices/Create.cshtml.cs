@@ -12,6 +12,7 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace DigitalNoticeBoard.Pages.Manage.Notices
 {
@@ -23,6 +24,7 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
 
         [BindProperty]
         public Notice Notice { get; set; }
+        [Required]
         [BindProperty]
         public IFormFile UploadFile { get; set; }
         [BindProperty]
