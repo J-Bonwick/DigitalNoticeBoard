@@ -35,8 +35,7 @@
             <span asp-validation-for="Notice.NoticeImagePath" class="text-danger"></span>
             </div>*@
             <div class="custom-file ">
-
-                <input asp-for="UploadFile" type="file" class="custom-file-input" data-val-required="Please upload an image."/>
+                <input asp-for="UploadFile" type="file" class="custom-file-input" data-val-required="Please upload an image." id="UploadFile" accept="image/*" />
                 <label asp-for="UploadFile" class="custom-file-label">Choose an image to upload</label>
                 <span asp-validation-for="UploadFile" class="text-danger"></span>
             </div>
@@ -73,3 +72,11 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script>
+    document.querySelector('.custom-file-input').addEventListener('change',function(e){
+        var fileName = document.getElementById("UploadFile").files[0].name;
+  var nextSibling = e.target.nextElementSibling
+  nextSibling.innerText = fileName
+})
+</script>
