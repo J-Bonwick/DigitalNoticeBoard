@@ -21,6 +21,15 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
         private readonly IHostEnvironment hostingEnvironment;
         public IList<NoticeDisplay> NoticeDisplay { get; set; }
 
+        [BindProperty]
+        public Notice Notice { get; set; }
+        [BindProperty]
+        public IFormFile UploadFile { get; set; }
+        [BindProperty]
+        public List<int> checkedDisplays { get; set; }
+        private List<NoticeAssignment> NoticeAssignments { get; set; }
+        //private NoticeAssignment NoticeAssignment { get; set; }
+
         public CreateModel(DigitalNoticeBoard.Data.DigitalNoticeBoardContext context, IHostEnvironment environment)
         {
             _context = context;
@@ -34,11 +43,6 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
             NoticeDisplay = await _context.NoticeDisplays.ToListAsync();
             //return Page();
         }
-
-        [BindProperty]
-        public Notice Notice { get; set; }
-        [BindProperty]
-        public IFormFile UploadFile { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -70,6 +74,16 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
             }
 
             _context.Notices.Add(Notice);
+            await _context.SaveChangesAsync();
+            NoticeAssignments = new List<NoticeAssignment>();
+            foreach(var display in checkedDisplays)
+            {
+                NoticeAssignment assignment = new NoticeAssignment();
+                assignment.NoticeID = Notice.NoticeID;
+                assignment.NoticeDisplayID = display;
+                NoticeAssignments.Add(assignment);
+            }
+            _context.NoticeAssignments.AddRange(NoticeAssignments);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
