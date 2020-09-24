@@ -1,6 +1,10 @@
 ﻿
 var connection = new signalR.HubConnectionBuilder().withUrl("/reload").build();
 
+connection.on("Reload", function () {
+    location.reload(true);
+});
+
 async function start() {
     try {
         await connection.start();
