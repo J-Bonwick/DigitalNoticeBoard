@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.SignalR;
 
 namespace DigitalNoticeBoard.Pages.Manage.Notices
 {
@@ -20,6 +21,7 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
     {
         private readonly DigitalNoticeBoard.Data.DigitalNoticeBoardContext _context;
         private readonly IHostEnvironment hostingEnvironment;
+        private readonly IHubContext<ReloadHub> _hubContext;
         public IList<NoticeDisplay> NoticeDisplay { get; set; }
 
         [BindProperty]
@@ -32,9 +34,10 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
         private List<NoticeAssignment> NoticeAssignments { get; set; }
         //private NoticeAssignment NoticeAssignment { get; set; }
 
-        public CreateModel(DigitalNoticeBoard.Data.DigitalNoticeBoardContext context, IHostEnvironment environment)
+        public CreateModel(DigitalNoticeBoard.Data.DigitalNoticeBoardContext context, IHostEnvironment environment, IHubContext<ReloadHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
             this.hostingEnvironment = environment;
         }
 
@@ -87,6 +90,7 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
             }
             _context.NoticeAssignments.AddRange(NoticeAssignments);
             await _context.SaveChangesAsync();
+            await _hubContext.Clients.All.SendAsync("Reload");
 
             return RedirectToPage("./Index");
         }
