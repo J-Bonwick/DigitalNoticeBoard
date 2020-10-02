@@ -11,6 +11,10 @@ namespace DigitalNoticeBoard.Models
         public int NoticeDisplayID { get; set; }
         [Display(Name = "Notice Display Name")]
         public string NoticeDisplayName { get; set; }
+        [Display(Name = "Transition Interval")]
+        public int NoticeDisplayInterval { get; set; }
+        [Display(Name = "Transition Type")]
+        public string NoticeDisplayTransitionType { get; set; }
 
         public ICollection<NoticeAssignment> NoticeAssignments { get; set; }
     }
