@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace DigitalNoticeBoard.Models
 {
+    public enum TransitionType
+    {
+        Slide,
+        Fade
+    }
     public class NoticeDisplay
     {
+
         public int NoticeDisplayID { get; set; }
         [Required]
         [Display(Name = "Notice Display Name")]
@@ -17,7 +23,7 @@ namespace DigitalNoticeBoard.Models
         public int NoticeDisplayInterval { get; set; }
         [Required]
         [Display(Name = "Transition Type")]
-        public string NoticeDisplayTransitionType { get; set; }
+        public TransitionType NoticeDisplayTransitionType { get; set; } // true = slide, false = fade
 
         public ICollection<NoticeAssignment> NoticeAssignments { get; set; }
     }
