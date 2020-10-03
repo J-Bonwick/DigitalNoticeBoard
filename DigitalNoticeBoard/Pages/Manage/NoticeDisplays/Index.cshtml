@@ -18,7 +18,10 @@
                 @Html.DisplayNameFor(model => model.NoticeDisplay[0].NoticeDisplayName)
             </th>
             <th>
-                Display Link
+                @Html.DisplayNameFor(model => model.NoticeDisplay[0].NoticeDisplayInterval)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoticeDisplay[0].NoticeDisplayTransitionType)
             </th>
             <th></th>
         </tr>
@@ -30,9 +33,10 @@
                 @Html.DisplayFor(modelItem => item.NoticeDisplayName)
             </td>
             <td>
-                <a href="/@item.NoticeDisplayID">
-                    @Url.PageLink("/Index")@item.NoticeDisplayID
-                </a>
+                @Html.DisplayFor(modelItem => item.NoticeDisplayInterval)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoticeDisplayTransitionType)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.NoticeDisplayID">Edit</a> |
