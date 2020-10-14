@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using DigitalNoticeBoard.Data;
 using DigitalNoticeBoard.Models;
+using Microsoft.AspNetCore.SignalR;
 
 namespace DigitalNoticeBoard.Pages.Manage.NoticeDisplays
 {
     public class DeleteModel : PageModel
     {
         private readonly DigitalNoticeBoard.Data.DigitalNoticeBoardContext _context;
+        private readonly IHubContext<ReloadHub> _hubContext;
 
-        public DeleteModel(DigitalNoticeBoard.Data.DigitalNoticeBoardContext context)
+        public DeleteModel(DigitalNoticeBoard.Data.DigitalNoticeBoardContext context, IHubContext<ReloadHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         [BindProperty]
@@ -52,6 +55,8 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeDisplays
                 _context.NoticeDisplays.Remove(NoticeDisplay);
                 await _context.SaveChangesAsync();
             }
+
+            await _hubContext.Clients.All.SendAsync("Reload");
 
             return RedirectToPage("./Index");
         }
