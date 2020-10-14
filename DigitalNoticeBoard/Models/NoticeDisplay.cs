@@ -20,7 +20,7 @@ namespace DigitalNoticeBoard.Models
         public string NoticeDisplayName { get; set; }
         [Required]
         [Display(Name = "Transition Interval")]
-        public int NoticeDisplayInterval { get; set; }
+        public double NoticeDisplayInterval { get; set; }
         [Required]
         [Display(Name = "Transition Type")]
         public TransitionType NoticeDisplayTransitionType { get; set; }
