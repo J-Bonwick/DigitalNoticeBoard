@@ -8,16 +8,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DigitalNoticeBoard.Data;
 using DigitalNoticeBoard.Models;
+using Microsoft.AspNetCore.SignalR;
 
 namespace DigitalNoticeBoard.Pages.Manage.NoticeDisplays
 {
     public class EditModel : PageModel
     {
         private readonly DigitalNoticeBoard.Data.DigitalNoticeBoardContext _context;
+        private readonly IHubContext<ReloadHub> _hubContext;
 
-        public EditModel(DigitalNoticeBoard.Data.DigitalNoticeBoardContext context)
+        public EditModel(DigitalNoticeBoard.Data.DigitalNoticeBoardContext context, IHubContext<ReloadHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         [BindProperty]
@@ -65,6 +68,8 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeDisplays
                     throw;
                 }
             }
+
+            await _hubContext.Clients.All.SendAsync("Reload");
 
             return RedirectToPage("./Index");
         }
