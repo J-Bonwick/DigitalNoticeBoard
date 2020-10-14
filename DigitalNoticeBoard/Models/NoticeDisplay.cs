@@ -23,7 +23,7 @@ namespace DigitalNoticeBoard.Models
         public int NoticeDisplayInterval { get; set; }
         [Required]
         [Display(Name = "Transition Type")]
-        public TransitionType NoticeDisplayTransitionType { get; set; } // true = slide, false = fade
+        public TransitionType NoticeDisplayTransitionType { get; set; }
 
         public ICollection<NoticeAssignment> NoticeAssignments { get; set; }
     }

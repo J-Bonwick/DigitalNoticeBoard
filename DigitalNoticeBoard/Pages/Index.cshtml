@@ -15,20 +15,20 @@
     <link rel="stylesheet" href="~/css/CarouselStyleSheet.css" />
 </head>
 <body>
-    <div id="carousel" class="carousel slide align-middle" data-ride="carousel" data-pause="false" data-interval="3000">
+    @if (Model.NoticeDisplay != null)
+    {
+    <div id="carousel" class="carousel slide align-middle @(Model.NoticeDisplay.NoticeDisplayTransitionType == Models.TransitionType.Fade ? "carousel-fade" : "")" data-ride="carousel" data-pause="false" data-interval="@Model.NoticeDisplay.NoticeDisplayInterval">
         <div class="carousel-inner">
-            @foreach(var assignment in Model.NoticeAssignment)
+            @foreach (var assignment in Model.NoticeAssignment)
             {
-                if (assignment.NoticeDisplayID.ToString() == Model.displayID)
-                {
-                    <div class="carousel-item @(firstImage ? "active" : "")">
-                        <img class="d-block w-100" src="~/imageUpload/@assignment.Notice.NoticeImagePath" alt="First slide">
-                    </div>
-                    firstImage = false;
-                }
+                <div class="carousel-item @(firstImage ? "active" : "")">
+                    <img class="d-block w-100" src="~/imageUpload/@assignment.Notice.NoticeImagePath" alt="First slide">
+                </div>
+                firstImage = false;
             }
         </div>
     </div>
+    }
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
