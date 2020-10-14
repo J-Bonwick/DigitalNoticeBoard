@@ -19,6 +19,7 @@ namespace DigitalNoticeBoard.Pages
         [BindProperty(SupportsGet = true)]
         public string displayID { get; set; }
         public IList<NoticeAssignment> NoticeAssignment { get; set; }
+        public NoticeDisplay NoticeDisplay;
 
         //public IndexModel(ILogger<IndexModel> logger)
         //{
@@ -32,9 +33,11 @@ namespace DigitalNoticeBoard.Pages
 
         public async Task OnGetAsync()
         {
-            NoticeAssignment = await _context.NoticeAssignments
-                .Include(n => n.Notice)
-                .Include(n => n.NoticeDisplay).ToListAsync();
+            NoticeAssignment = await _context.NoticeAssignments.Where(s => s.NoticeDisplayID.Equals(displayID)).ToListAsync();
+            NoticeDisplay = await _context.NoticeDisplays.Where
+            //NoticeAssignment = await _context.NoticeAssignments
+            //    .Include(n => n.Notice)
+            //    .Include(n => n.NoticeDisplay).ToListAsync();
         }
     }
 }
