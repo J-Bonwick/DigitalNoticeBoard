@@ -17,7 +17,7 @@
 <body>
     @if (Model.NoticeDisplay != null)
     {
-    <div id="carousel" class="carousel slide align-middle @(Model.NoticeDisplay.NoticeDisplayTransitionType == Models.TransitionType.Fade ? "carousel-fade" : "")" data-ride="carousel" data-pause="false" data-interval="@Model.NoticeDisplay.NoticeDisplayInterval">
+    <div id="carousel" class="carousel slide align-middle @(Model.NoticeDisplay.NoticeDisplayTransitionType == Models.TransitionType.Fade ? "carousel-fade" : "")" data-ride="carousel" data-pause="false" data-interval="@(Model.NoticeDisplay.NoticeDisplayInterval * 1000)">
         <div class="carousel-inner">
             @foreach (var assignment in Model.NoticeAssignment)
             {
