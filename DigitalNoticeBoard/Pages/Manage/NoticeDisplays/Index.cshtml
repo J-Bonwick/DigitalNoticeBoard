@@ -6,44 +6,51 @@
     Layout = "~/Pages/Manage/ManageLayout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="card">
+    <div class="card-header">
+        Displays
+    </div>
+    <div class="card-body">
+        <p>
+            <a asp-page="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NoticeDisplay[0].NoticeDisplayName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NoticeDisplay[0].NoticeDisplayInterval)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NoticeDisplay[0].NoticeDisplayTransitionType)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.NoticeDisplay)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NoticeDisplayName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NoticeDisplayInterval)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NoticeDisplayTransitionType)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.NoticeDisplayID">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.NoticeDisplayID">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.NoticeDisplayID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NoticeDisplay[0].NoticeDisplayName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NoticeDisplay[0].NoticeDisplayInterval)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NoticeDisplay[0].NoticeDisplayTransitionType)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.NoticeDisplay) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NoticeDisplayName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NoticeDisplayInterval)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NoticeDisplayTransitionType)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.NoticeDisplayID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.NoticeDisplayID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.NoticeDisplayID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    </div>
+</div>
