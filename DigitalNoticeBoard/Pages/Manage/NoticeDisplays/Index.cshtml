@@ -42,9 +42,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.NoticeDisplayTransitionType)
                         </td>
-                        <td>
-                            <a asp-page="./Edit" asp-route-id="@item.NoticeDisplayID">Edit</a> |
-                            <a asp-page="./Delete" asp-route-id="@item.NoticeDisplayID">Delete</a>
+                        <td class="float-right">
+                            <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.NoticeDisplayID">Edit</a>
+                            <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.NoticeDisplayID">Delete</a>
                         </td>
                     </tr>
                 }
