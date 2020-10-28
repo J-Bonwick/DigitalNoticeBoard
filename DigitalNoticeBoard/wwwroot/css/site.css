@@ -37,6 +37,10 @@ body {
     right: 1rem;
 }
 
+.nav-item:hover {
+    background-color: #303030;
+}
+
 .navbar .form-control {
     padding: .75rem 1rem;
     border-width: 0;
