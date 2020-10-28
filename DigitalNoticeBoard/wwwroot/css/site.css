@@ -42,3 +42,9 @@ body {
     border-width: 0;
     border-radius: 0;
 }
+.card-body {
+    padding: 0;
+}
+.table {
+    margin-bottom: 0;
+}
