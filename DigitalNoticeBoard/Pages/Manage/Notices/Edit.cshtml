@@ -6,44 +6,47 @@
     Layout = "~/Pages/Manage/ManageLayout.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>Notice</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Notice.NoticeID" />
-            <div class="form-group">
-                <label asp-for="Notice.NoticeName" class="control-label"></label>
-                <input asp-for="Notice.NoticeName" class="form-control" />
-                <span asp-validation-for="Notice.NoticeName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Notice.NoticeStartDate" class="control-label"></label>
-                <input asp-for="Notice.NoticeStartDate" class="form-control" />
-                <span asp-validation-for="Notice.NoticeStartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Notice.NoticeStopDate" class="control-label"></label>
-                <input asp-for="Notice.NoticeStopDate" class="form-control" />
-                <span asp-validation-for="Notice.NoticeStopDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Notice.NoticeImagePath" class="control-label"></label>
-                <input asp-for="Notice.NoticeImagePath" class="form-control" />
-                <span asp-validation-for="Notice.NoticeImagePath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="card">
+    <div class="card-header">
+        <h3 class="float-left">Edit Notice</h3>
     </div>
-</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Notice.NoticeID" />
+                    <div class="form-group">
+                        <label asp-for="Notice.NoticeName" class="control-label"></label>
+                        <input asp-for="Notice.NoticeName" class="form-control" />
+                        <span asp-validation-for="Notice.NoticeName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Notice.NoticeStartDate" class="control-label"></label>
+                        <input asp-for="Notice.NoticeStartDate" class="form-control" />
+                        <span asp-validation-for="Notice.NoticeStartDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Notice.NoticeStopDate" class="control-label"></label>
+                        <input asp-for="Notice.NoticeStopDate" class="form-control" />
+                        <span asp-validation-for="Notice.NoticeStopDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Notice.NoticeImagePath" class="control-label"></label>
+                        <input asp-for="Notice.NoticeImagePath" class="form-control" />
+                        <span asp-validation-for="Notice.NoticeImagePath" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
+        <div>
+            <a asp-page="./Index">Back to List</a>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
