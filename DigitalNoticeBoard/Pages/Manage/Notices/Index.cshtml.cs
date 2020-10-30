@@ -20,10 +20,14 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
         }
 
         public IList<Notice> Notice { get;set; }
+        public IList<NoticeAssignment> NoticeAssignment { get; set; }
 
         public async Task OnGetAsync()
         {
             Notice = await _context.Notices.ToListAsync();
+            NoticeAssignment = await _context.NoticeAssignments
+                .Include(n => n.Notice)
+                .Include(n => n.NoticeDisplay).ToListAsync();
         }
     }
 }
