@@ -34,7 +34,9 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.NoticeDisplayName)
+                            <a href="/@item.NoticeDisplayID" target="_blank">
+                                @Html.DisplayFor(modelItem => item.NoticeDisplayName)
+                            </a>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.NoticeDisplayInterval)
