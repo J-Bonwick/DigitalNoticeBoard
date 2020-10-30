@@ -27,6 +27,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Notice[0].NoticeStopDate)
                     </th>
+                    <th>
+                        Assigned Boards
+                    </th>
 
                     <th></th>
                 </tr>
@@ -34,28 +37,40 @@
             <tbody>
                 @foreach (var item in Model.Notice)
                 {
-    <tr>
-        <td>
-            <a href="~/imageUpload/@item.NoticeImagePath">
-                <img src="~/imageUpload/@item.NoticeImagePath" style="height: 150px" />
-            </a>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoticeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoticeStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoticeStopDate)
-        </td>
+                    <tr>
+                        <td>
+                            <a href="~/imageUpload/@item.NoticeImagePath">
+                                <img src="~/imageUpload/@item.NoticeImagePath" style="height: 150px" />
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NoticeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NoticeStartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NoticeStopDate)
+                        </td>
+                        <td>
+                            <ul>
+                                @foreach (var assignment in Model.NoticeAssignment)
+                                {
+                                    if (assignment.NoticeID == item.NoticeID)
+                                    {
+                                        <li>@assignment.NoticeDisplay.NoticeDisplayName</li>
+                                    }
+                                }
+                                </ul>
+                        </td>
 
-        <td class="float-right">
-            <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.NoticeID">Edit</a>
-            <a class="btn btn-primary btn-sm" asp-page="./Details" asp-route-id="@item.NoticeID">Details</a>
-            <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.NoticeID">Delete</a>
-        </td>
-    </tr>}
+                        <td class="float-right">
+                            <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.NoticeID">Edit</a>
+                            <a class="btn btn-primary btn-sm" asp-page="./Details" asp-route-id="@item.NoticeID">Details</a>
+                            <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.NoticeID">Delete</a>
+                        </td>
+                    </tr>
+}
             </tbody>
         </table>
 
