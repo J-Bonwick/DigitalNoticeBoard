@@ -57,7 +57,7 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
             {
                 if (UploadFile.Length > 0)
                 {
-                    var fileName = Guid.NewGuid().ToString();
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(UploadFile.FileName);
                     var dir = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot/imageUpload");
                     Notice.NoticeImagePath = fileName;
                     var filePath = Path.Combine(dir, fileName);
