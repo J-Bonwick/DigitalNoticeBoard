@@ -25,6 +25,8 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
 
         [BindProperty]
         public Notice Notice { get; set; }
+        public IList<NoticeDisplay> NoticeDisplay { get; set; }
+        public IList<NoticeAssignment> NoticeAssignments { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -39,6 +41,8 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
             {
                 return NotFound();
             }
+            NoticeDisplay = await _context.NoticeDisplays.ToListAsync();
+            NoticeAssignments = await _context.NoticeAssignments.ToListAsync();
             return Page();
         }
 

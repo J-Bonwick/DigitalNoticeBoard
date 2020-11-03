@@ -36,6 +36,26 @@
                         <input asp-for="Notice.NoticeImagePath" class="form-control" />
                         <span asp-validation-for="Notice.NoticeImagePath" class="text-danger"></span>
                     </div>
+                    <div class="card form-group" style="margin-top: 20px">
+                        <div class="card-header">
+                            Associated Notice Boards
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            @foreach (var display in Model.NoticeDisplay)
+                            {
+                                <li class="list-group-item">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="checkedDisplays" type="checkbox" value="@display.NoticeDisplayID" 
+                                               @if (Model.NoticeAssignments.Any(e => e.NoticeDisplayID == display.NoticeDisplayID && e.NoticeID == Model.Notice.NoticeID)) {
+                                                   @("checked")
+                                               }/>
+                                        <label class="form-check-label">@display.NoticeDisplayName</label>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+
+                    </div>
                     <div class="form-group">
                         <input type="submit" value="Save" class="btn btn-primary" />
                     </div>
