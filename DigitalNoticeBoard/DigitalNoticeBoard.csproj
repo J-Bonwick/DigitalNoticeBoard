@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <UserSecretsId>8d7cdc7e-2dda-49fe-afa5-0742ca7e8933</UserSecretsId>
+    <Version>1.0.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

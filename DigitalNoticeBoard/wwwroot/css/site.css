@@ -21,6 +21,9 @@ body {
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
+.flex-column {
+    height:100%;
+}
 .navbar-brand {
     padding-top: .75rem;
     padding-bottom: .75rem;
