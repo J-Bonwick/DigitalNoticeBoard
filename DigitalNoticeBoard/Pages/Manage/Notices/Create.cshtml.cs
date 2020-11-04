@@ -72,6 +72,10 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
             {
                 return Page();
             }
+            //Set the date enable bit so that the model is still valid
+            Notice.NoticeStartDate = DateTime.Now;
+            Notice.NoticeStopDate = DateTime.Now;
+            Notice.EnabelStopDate = false;
 
             if (!ModelState.IsValid)
             {

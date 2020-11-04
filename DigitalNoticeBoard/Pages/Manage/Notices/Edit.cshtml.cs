@@ -52,6 +52,10 @@ namespace DigitalNoticeBoard.Pages.Manage.Notices
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            //Set the date enable bit so that the model is still valid
+            Notice.NoticeStartDate = DateTime.Now;
+            Notice.NoticeStopDate = DateTime.Now;
+            Notice.EnabelStopDate = false;
             if (!ModelState.IsValid)
             {
                 return Page();
