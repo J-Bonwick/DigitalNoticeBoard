@@ -18,6 +18,9 @@ namespace DigitalNoticeBoard.Models
         [Display(Name = "Stop Date")]
         [DataType(DataType.Date)]
         public DateTime NoticeStopDate { get; set; }
+        [Required]
+        [Display(Name = "Enable Stop Date")]
+        public bool EnabelStopDate { get; set; }
         public String NoticeImagePath { get; set; }
 
 
