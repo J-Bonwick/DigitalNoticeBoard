@@ -6,30 +6,43 @@
     Layout = "~/Pages/Manage/ManageLayout.cshtml";
 }
 
-<h1>Create</h1>
+<div class="card">
+    <div class="card-header">
+        <h3 class="float-left">Create New Display</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="NoticeDisplay.NoticeDisplayName" class="control-label"></label>
+                        <input asp-for="NoticeDisplay.NoticeDisplayName" class="form-control" />
+                        <span asp-validation-for="NoticeDisplay.NoticeDisplayName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NoticeDisplay.NoticeDisplayInterval" class="control-label"></label>
+                        <input asp-for="NoticeDisplay.NoticeDisplayInterval" class="form-control" />
+                        <span asp-validation-for="NoticeDisplay.NoticeDisplayInterval" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NoticeDisplay.NoticeDisplayTransitionType" class="control-label"></label>
+                        <select asp-for="NoticeDisplay.NoticeDisplayTransitionType" asp-items="Html.GetEnumSelectList<DigitalNoticeBoard.Models.TransitionType>()" class="form-control"></select>
+                        <span asp-validation-for="NoticeDisplay.NoticeDisplayTransitionType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
 
-<h4>NoticeDisplay</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NoticeDisplay.NoticeDisplayName" class="control-label"></label>
-                <input asp-for="NoticeDisplay.NoticeDisplayName" class="form-control" />
-                <span asp-validation-for="NoticeDisplay.NoticeDisplayName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        <div>
+            <a asp-page="Index">Back to List</a>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using DigitalNoticeBoard.Data;
 using DigitalNoticeBoard.Models;
+using Microsoft.AspNetCore.SignalR;
 
 namespace DigitalNoticeBoard.Pages.Manage.NoticeDisplays
 {
     public class CreateModel : PageModel
     {
         private readonly DigitalNoticeBoard.Data.DigitalNoticeBoardContext _context;
+        private readonly IHubContext<ReloadHub> _hubContext;
 
-        public CreateModel(DigitalNoticeBoard.Data.DigitalNoticeBoardContext context)
+        public CreateModel(DigitalNoticeBoard.Data.DigitalNoticeBoardContext context, IHubContext<ReloadHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         public IActionResult OnGet()
@@ -38,6 +41,8 @@ namespace DigitalNoticeBoard.Pages.Manage.NoticeDisplays
 
             _context.NoticeDisplays.Add(NoticeDisplay);
             await _context.SaveChangesAsync();
+
+            await _hubContext.Clients.All.SendAsync("Reload");
 
             return RedirectToPage("./Index");
         }

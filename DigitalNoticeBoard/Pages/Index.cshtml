@@ -1,10 +1,40 @@
-﻿@page
+﻿@page "{displayID?}"
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    Layout = "";
+    bool firstImage = true;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DigitalNoticeBoard</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/CarouselStyleSheet.css" />
+</head>
+<body>
+    @if (Model.NoticeDisplay != null)
+    {
+    <div id="carousel" class="carousel slide align-middle @(Model.NoticeDisplay.NoticeDisplayTransitionType == Models.TransitionType.Fade ? "carousel-fade" : "")" data-ride="carousel" data-pause="false" data-interval="@(Model.NoticeDisplay.NoticeDisplayInterval * 1000)">
+        <div class="carousel-inner">
+            @foreach (var assignment in Model.NoticeAssignment)
+            {
+                <div class="carousel-item @(firstImage ? "active" : "")">
+                    <img class="d-block w-100" src="~/imageUpload/@assignment.Notice.NoticeImagePath" alt="First slide">
+                </div>
+                firstImage = false;
+            }
+        </div>
+    </div>
+    }
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/Reload.js"></script>
+</body>
+</html>
+

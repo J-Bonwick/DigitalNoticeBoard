@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using DigitalNoticeBoard.Data;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.SignalR;
 
 namespace DigitalNoticeBoard
 {
@@ -28,7 +30,7 @@ namespace DigitalNoticeBoard
         {
             services.AddRazorPages( options =>
             {
-                options.Conventions.AuthorizePage("/Privacy");
+                //options.Conventions.AuthorizePage("/Privacy");
                 options.Conventions.AuthorizeFolder("/Manage");
                 options.Conventions.AllowAnonymousToPage("/Index");
             });
@@ -36,6 +38,7 @@ namespace DigitalNoticeBoard
 
             services.AddDbContext<DigitalNoticeBoardContext>(options =>
                     options.UseSqlite("Data Source=DigitalNoticeBoard.db"));
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,7 +65,15 @@ namespace DigitalNoticeBoard
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ReloadHub>("/reload");
             });
+        }
+    }
+    public class ReloadHub : Hub
+    {
+        public Task SendReload()
+        {
+            return Clients.All.SendAsync("Reload");
         }
     }
 }

@@ -8,42 +8,41 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">DigitalNoticeBoard</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <p class="nav navbar-text navbar-right">Hello, @User.Identity.Name!</p>
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Manage/Notices/Index">Notices</a>
+    <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0">
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" asp-area="" asp-page="/Manage/Index"><h4>Digital Notice Board</h4></a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+                data-target="#sidebarMenu" aria-controls="sidebarMenu"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <p class="nav navbar-text navbar-right mr-0 px-3">Welcome, @User.Identity.Name!</p>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item nav-item-hover">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Manage/Notices/Index">Notices</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Manage/NoticeAssignments/Index">Notice Assignments</a>
+                        <li class="nav-item nav-item-hover">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Manage/NoticeDisplays/Index">Displays</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Manage/NoticeDisplays/Index">Notice Displays</a>
+                        <li class="nav-item nav-item-hover mt-auto">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Manage/About">About</a>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+            </nav>
+        </div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-md-4">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - DigitalNoticeBoard - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
