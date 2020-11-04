@@ -21,12 +21,12 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Notice[0].NoticeName)
                     </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.Notice[0].NoticeStartDate)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Notice[0].NoticeStopDate)
-                    </th>
+                    </th>*@
                     <th>
                         Assigned Boards
                     </th>
@@ -46,12 +46,12 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.NoticeName)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.NoticeStartDate)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.NoticeStopDate)
-                        </td>
+                        </td>*@
                         <td>
                             <ul>
                                 @foreach (var assignment in Model.NoticeAssignment)
