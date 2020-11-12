@@ -28,6 +28,12 @@ namespace DigitalNoticeBoard
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("Staff", policy => policy.RequireRole("DETNSW\\Detnsw Device_8870_Admin"));
+
+            //});
+
             services.AddRazorPages( options =>
             {
                 //options.Conventions.AuthorizePage("/Privacy");
@@ -60,6 +66,7 @@ namespace DigitalNoticeBoard
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
