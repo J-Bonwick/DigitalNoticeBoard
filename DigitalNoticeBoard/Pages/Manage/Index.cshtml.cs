@@ -10,8 +10,13 @@ namespace DigitalNoticeBoard.Pages.Manage
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (!User.IsInRole("~SCH8870ALL"))
+            {
+                return RedirectToPage("/Index");
+            }
+            return Page();
         }
     }
 }
