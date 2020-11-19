@@ -28,13 +28,7 @@ namespace DigitalNoticeBoard
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages( options =>
-            {
-                //options.Conventions.AuthorizePage("/Privacy");
-                options.Conventions.AuthorizeFolder("/Manage");
-                options.Conventions.AllowAnonymousToPage("/Index");
-            });
-            services.AddAuthentication(IISDefaults.AuthenticationScheme);
+            services.AddRazorPages();
 
             services.AddDbContext<DigitalNoticeBoardContext>(options =>
                     options.UseSqlite("Data Source=DigitalNoticeBoard.db"));
@@ -59,8 +53,6 @@ namespace DigitalNoticeBoard
             app.UseStaticFiles();
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
