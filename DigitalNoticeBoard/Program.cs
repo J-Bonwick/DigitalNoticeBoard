@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using DigitalNoticeBoard.Data;
@@ -17,6 +18,8 @@ namespace DigitalNoticeBoard
         {
             var host = CreateHostBuilder(args).Build();
             CreateDbIfNotExists(host);
+            //Create the file upload directory
+            Directory.CreateDirectory("wwwroot/imageUpload");
             host.Run();
         }
 
